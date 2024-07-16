@@ -1,75 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>VMOnline</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English or Spanish Meme</title>
     <style>
-         
-         body{
-           font-family: Arial, Helvetica, sans-serif;
-         }
-
-      
-      
-        .version-images {
+        body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
         }
-        .version-images img {
+        button {
+            padding: 10px 20px;
             margin: 10px;
-            max-width: 150px;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
-  <link rel="icon" sizes="16x16" type="image/png" href="VMLabs16x16.png"/>
-  <link rel="icon" sizes="192x192" type="image/png" href="VMLabs192x192.png"/>
-  <link rel="apple-touch-icon"
 </head>
 <body>
-    <header>
-        <h1>Welcome to the VMOnline</h1>
-    </header>
-  <announcement>THIS IS A BETA BUILD AND IT IS REALLY BUGGY!</announcement>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-        </ul>
-    </nav>
-    <section>
-        <h2>About Us</h2>
-        <p>Welcome to the VMOnline, your source for running multiple versions of Windows on virtual machines. Whether you're a developer, IT professional, or simply nostalgic for older operating systems, we've got you covered.</p>
-    </section>
-    <section>
-        <h2>Windows Versions</h2>
-        <div class="version-images">
-          <a href="https://pe2.vmlabs.repl.co/VirtualXP.htm"><img src="VMPic.png" alt="Windows 95">Windows 7</a>
-          <a href="https://pe4.vmlabs.repl.co/VirtualXP.htm"><img src="VMPic.png" alt="Windows 95">Windows PE 2.0</a>
-            <a href="https://xp.vmlabs.repl.co/VirtualXP.htm"><img src="VMPic.png" alt="Windows 98">Windows XP (RTM)</a>
-            <a href="https://pe1.vmlabs.repl.co/VirtualXP.htm"><img src="VMPic.png" alt="Windows 95">WinPE (1.0 2296)</a>
-          <a href="https://pe2.vmlabs.repl.co/VirtualXP.htm"><img src="VMPic.png" alt="Windows 95">WinPE (1.0 RTM)</a>
-        </div>
-    </section>
-  <section>
-      <h2>macOS Versions</h2>
-      <div class="version-images">
-          <a href="https://macos701.vmlabs.repl.co/MinivMac.htm"><img src="VMPic.png" alt="Windows 98">macOS 7.0.1</a>
-      </div>
-  </section>
-  <section>
-      <h2>Linux Versions</h2>
-      <div class="version-images">
-          <a href="#home"><img src="VMPic.png" alt="Windows 98">Comming soon!</a>
-      </div>
-  </section>
-  <section>
-      <h2>Custom OS</h2>
-      <div class="version-images">
-          <a href="https://bios.vmlabs.repl.co/VirtualXP.htm"><img src="VMPic.png" alt="Windows 98">Launch Empty Maschine</a>
-          <a href="selection.html"><img src="VMPic.png" alt="Windows 95">Create A VM</a>
-      </div>
-  </section>
-    <footer>
-        <p>&copy; 2024 VMOnline</p>
-    </footer>
+    <h1>English or Spanish?</h1>
+    <div>
+        <button onclick="showMessage('english')">English</button>
+        <button onclick="showMessage('spanish')">Spanish</button>
+    </div>
+    <p id="message"></p>
+
+    <script>
+        function showMessage(language) {
+            var messages = {
+                english: [
+                    "Whoever moves first is gay.",
+                    "If you blink, you're gay.",
+                    "If you speak, you're gay.",
+                    "If you stand still, you're gay."
+                ],
+                spanish: [
+                    "El que se mueva primero es gay.",
+                    "Si parpadeas, eres gay.",
+                    "Si hablas, eres gay.",
+                    "Si te quedas quieto, eres gay."
+                ]
+            };
+
+            var randomIndex = Math.floor(Math.random() * messages[language].length);
+            var message = messages[language][randomIndex];
+
+            document.getElementById('message').innerText = message;
+        }
+    </script>
 </body>
 </html>
