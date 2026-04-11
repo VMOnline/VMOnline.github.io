@@ -1,81 +1,503 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English or Spanish Meme</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-                }
-        .navbar {
-            overflow: hidden;
-            background-color: #333;
-        }
-        .navbar a {
-            float: left;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Skull Explains</title>
+  <meta name="description" content="Science, body facts, and what happens if videos by The Skull Explains." />
+  <style>
+    :root {
+      --bg: #1f7cff;
+      --bg-dark: #1566d6;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #ef4444;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      --radius: 20px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-dark) 100%);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .nav {
+      padding: 18px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 14px 20px;
+      border-radius: 999px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: white;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: white;
+      opacity: 0.95;
+      font-weight: 600;
+    }
+
+    .hero {
+      padding: 36px 0 64px;
+    }
+
+    .hero-card {
+      background: white;
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-text p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 620px;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--bg);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--bg-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #eaf2ff;
+      color: var(--bg-dark);
+    }
+
+    .btn-secondary:hover {
+      background: #dce9ff;
+      transform: translateY(-1px);
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mascot-wrap {
+      background: linear-gradient(180deg, #dbeafe 0%, #bfdbfe 100%);
+      border-radius: 28px;
+      padding: 20px;
+      width: 100%;
+      max-width: 380px;
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+    }
+
+    .mascot-wrap img {
+      max-height: 340px;
+      object-fit: contain;
+    }
+
+    .section {
+      padding: 0 0 54px;
+    }
+
+    .section-card {
+      background: white;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 34px;
+    }
+
+    .section-header {
+      margin-bottom: 24px;
+    }
+
+    .section-header h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .video-card {
+      background: #f8fafc;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      transition: 0.2s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    .video-thumb {
+      aspect-ratio: 9 / 16;
+      background: linear-gradient(180deg, #60a5fa, #2563eb);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 800;
+      text-align: center;
+      padding: 18px;
+      font-size: 1.1rem;
+    }
+
+    .video-content {
+      padding: 18px;
+    }
+
+    .video-content h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .video-content p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .about-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .about-box h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .about-box p,
+    .about-box li {
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .about-box ul {
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    .footer {
+      padding: 0 0 40px;
+    }
+
+    .footer-card {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: white;
+      border-radius: 24px;
+      padding: 20px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: white;
+      font-weight: 600;
+      opacity: 0.95;
+    }
+
+    @media (max-width: 900px) {
+      .hero-card,
+      .about-grid,
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        padding: 28px;
+      }
+
+      .mascot-wrap {
+        min-height: 280px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner {
+        border-radius: 24px;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding-top: 22px;
+      }
+
+      .hero-card,
+      .section-card {
+        padding: 22px;
+        border-radius: 22px;
+      }
+
+      .hero-text p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="navbar">
-  <a href="#home">Home</a>
-  <a href="englishorjapanese.html">English Or Japanese</a>
-  <a href="englishorfrench.html">English Or French</a>
-  <a href="englishorenchantingtable.html">English or Enchanting Table</a>
-</div>
-    <h1>English or Spanish?</h1>
-    <div>
-        <button onclick="showMessage('english')">English</button>
-        <button onclick="showMessage('spanish')">Spanish</button>
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="brand">
+          <div class="brand-logo">
+            <img src="Logo.png" alt="The Skull Explains logo">
+          </div>
+          <span>The Skull Explains</span>
+        </a>
+
+        <nav class="nav-links">
+          <a href="#videos">Videos</a>
+          <a href="#about">About</a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube</a>
+        </nav>
+      </div>
     </div>
-    <p id="message"></p>
+  </header>
 
-    <script>
-        function showMessage(language) {
-            var messages = {
-                english: [
-                    "Whoever moves first is gay.",
-                    "If you blink, you're gay.",
-                    "If you speak, you're gay.",
-                    "If you stand still, you're gay."
-                ],
-                spanish: [
-                    "El que se mueva primero es gay.",
-                    "Si parpadeas, eres gay.",
-                    "Si hablas, eres gay.",
-                    "Si te quedas quieto, eres gay."
-                ]
-            };
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <div class="hero-text">
+            <h1>The Skull Explains</h1>
+            <p>
+              Science, body facts, and “what happens if” videos explained in a simple,
+              visual, and entertaining way.
+            </p>
 
-            var randomIndex = Math.floor(Math.random() * messages[language].length);
-            var message = messages[language][randomIndex];
+            <div class="hero-buttons">
+              <a class="btn btn-primary" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+                Watch on YouTube
+              </a>
+              <a class="btn btn-secondary" href="#videos">
+                Latest Videos
+              </a>
+            </div>
+          </div>
 
-            document.getElementById('message').innerText = message;
-        }
-    </script>
+          <div class="hero-visual">
+            <div class="mascot-wrap">
+              <img src="Skeleton_sitting_at_202604111015.jpeg" alt="Skeleton mascot at a computer">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="videos">
+      <div class="container">
+        <div class="section-card">
+          <div class="section-header">
+            <h2>Latest Videos</h2>
+            <p>
+              Quick explainer Shorts about the human body, sleep, hydration, and more.
+            </p>
+          </div>
+
+          <div class="video-grid">
+            <a class="video-card" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+              <div class="video-thumb">What Happens If You Don’t Sleep for 7 Days?</div>
+              <div class="video-content">
+                <h3>What Happens If You Don’t Sleep for 7 Days?</h3>
+                <p>A day-by-day timeline of how sleep deprivation affects the body.</p>
+              </div>
+            </a>
+
+            <a class="video-card" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+              <div class="video-thumb">How To Fall Asleep Faster</div>
+              <div class="video-content">
+                <h3>How To Fall Asleep Faster</h3>
+                <p>Simple habits that help your body relax and sleep more quickly.</p>
+              </div>
+            </a>
+
+            <a class="video-card" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+              <div class="video-thumb">What Happens If You Stop Drinking Water for 3 Days?</div>
+              <div class="video-content">
+                <h3>What Happens If You Stop Drinking Water for 3 Days?</h3>
+                <p>A fast explainer showing how dehydration escalates over time.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-card">
+          <div class="section-header">
+            <h2>About</h2>
+            <p>
+              The Skull Explains turns science and body facts into simple animated videos.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-box">
+              <h3>What this channel is about</h3>
+              <p>
+                From “what happens if” scenarios to quick “how to” explanations,
+                The Skull Explains breaks down interesting topics in a fun, visual format.
+              </p>
+            </div>
+
+            <div class="about-box">
+              <h3>Topics covered</h3>
+              <ul>
+                <li>Sleep and recovery</li>
+                <li>Hydration and health</li>
+                <li>Human body facts</li>
+                <li>Timeline-style science videos</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-card">
+        <div>© 2026 The Skull Explains</div>
+        <div class="footer-links">
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="#">Home</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
